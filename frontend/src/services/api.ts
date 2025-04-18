@@ -1,7 +1,7 @@
 import axios, { RawAxiosRequestHeaders } from 'axios';
 import { getToken } from './auth';
 
-export const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+export const API_URL = process.env.REACT_APP_API_URL || 'https://persona-chatbot-tvdl.onrender.com';
 
 // Create axios instance with default config
 const api = axios.create({
