@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npx react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "vercel-build": "npm install --force && CI=false npm run build"
+    "vercel-build": "CI='' npx react-scripts build"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",

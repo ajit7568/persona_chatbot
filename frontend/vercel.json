@@ -3,22 +3,18 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build",
+      "use": "@vercel/node",
       "config": {
-        "distDir": "build",
-        "buildCommand": "npm install --force && CI=false npm run build"
+        "buildCommand": "npx react-scripts build",
+        "outputDirectory": "build"
       }
     }
   ],
   "routes": [
-    {
-      "src": "/static/(.*)",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" },
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/[^.]+",
-      "dest": "/index.html"
-    }
-  ]
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/.*", "dest": "/index.html" }
+  ],
+  "env": {
+    "REACT_APP_API_URL": "https://persona-chatbot-tvdl.onrender.com"
+  }
 }
