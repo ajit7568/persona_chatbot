@@ -1,6 +1,20 @@
 import axios, { RawAxiosRequestHeaders } from 'axios';
 import { getToken } from './auth';
 
+declare global {
+    interface Window {
+        __REACT_APP_API_URL: string;
+    }
+}
+
+// For Create React App environment variables
+declare const process: {
+  env: {
+    NODE_ENV: 'development' | 'production' | 'test';
+    REACT_APP_API_URL?: string;
+  };
+};
+
 export const API_URL = process.env.REACT_APP_API_URL || 'https://persona-chatbot-tvdl.onrender.com';
 
 // Create axios instance with default config

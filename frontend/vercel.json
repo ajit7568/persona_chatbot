@@ -1,17 +1,30 @@
 {
   "version": 2,
-  "buildCommand": "cd frontend && npm install --legacy-peer-deps && npm run build",
-  "outputDirectory": "frontend/build",
-  "installCommand": "npm install --legacy-peer-deps",
-  "framework": null,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "build/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/build/static/$1"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/build/manifest.json"
+    },
+    {
+      "src": "/(.*).png",
+      "dest": "/build/$1.png"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/build/index.html"
     }
   ],
   "env": {
-    "REACT_APP_API_URL": "https://persona-chatbot-tvdl.onrender.com",
-    "NODE_OPTIONS": "--openssl-legacy-provider"
+    "REACT_APP_API_URL": "https://persona-chatbot-tvdl.onrender.com"
   }
 }
