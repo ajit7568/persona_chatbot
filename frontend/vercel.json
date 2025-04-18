@@ -1,11 +1,16 @@
 {
-  "buildCommand": "npm run build",
+  "version": 2,
+  "buildCommand": "CI=false npm run build",
   "outputDirectory": "build",
+  "installCommand": "npm install",
   "framework": "create-react-app",
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "REACT_APP_API_URL": "https://persona-chatbot-tvdl.onrender.com"
+  }
 }
